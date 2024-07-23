@@ -1,23 +1,51 @@
 .navbar{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding-top: 20px;
 }
 .navbar-menu{
     display: flex;
+    text-decoration: none;
     justify-content: space-between;
     align-items: center;
-    color: gray;
+    list-style-type: none;
+    color: #49557e;
+    cursor: pointer;
     gap: 20px;
 }
 .navbar-right{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 .navbar-button{
-    background-color: transparent;
-    color: gray;
+    background-color: white;
+    color: #49557e;
+    font-size: 16px;
+    padding: 10px 30px;
+    border: 1px solid tomato;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+.navbar-button:hover{
+    background-color: tomato;
+    color: white;
+}
+.navbar>.navbar-menu>.active{
+    padding-bottom: 2px;
+    border-bottom: 2px solid tomato;
+}
+.navbar-basket-icon{
+    position: relative;
+}
+.navbar-basket-icon .dot{
+    position: absolute;
+    min-width: 10px;
+    right: -8px;
+    top: -8px;;
+    min-height: 10px;
+    border-radius: 20px;
+    background-color: tomato;
 }
