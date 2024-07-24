@@ -7,7 +7,6 @@ function Navbar () {
   const [menu,setMenu] = useState("Home")
 
   function setNavMenu(e){
-    console.log(e.target.innerHTML)
     setMenu(e.target.innerHTML)
   }
   return (
