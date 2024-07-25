@@ -41,3 +41,13 @@
     margin: 2px 0px;
     height: 2px;
 }
+@media (max-width:750px){
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+    }
+    .footer-content-right {
+        text-align: center;
+    }
+}
