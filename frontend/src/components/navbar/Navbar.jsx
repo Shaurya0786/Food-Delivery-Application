@@ -12,7 +12,7 @@ function Navbar ({setShowLogin}) {
   }
   return (
     <div className='navbar'>
-      <img src={assets.logo} alt="" className='logo w-37'/>
+      <Link to='/'><img src={assets.logo} alt="" className='logo w-37'/></Link>
       <ul className='navbar-menu' >
         <Link to='/' onClick={setNavMenu} className={menu=="Home"?"active":""} >Home</Link>
         <a  href="#explore-menu" onClick={setNavMenu} className={menu=="Menu"?"active":""}  >Menu</a>
@@ -22,7 +22,7 @@ function Navbar ({setShowLogin}) {
       <div className="navbar-right">
         <img src={assets.search_icon} alt="" />
         <div className='navbar-basket-icon'>
-            <img src={assets.basket_icon} alt="" />
+            <Link to="/cart"><img src={assets.basket_icon} alt=""   /></Link>
             <div className='dot'></div>
         </div>
         <button className='navbar-button' onClick={()=>{setShowLogin(false)}}>sign in</button>
