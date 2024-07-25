@@ -13,7 +13,7 @@ const LoginPopup = ({setShowLogin}) => {
                 <h2>
                     {currState}
                 </h2>
-                <img src={assets.cross_icon} alt="" onClick={()=>{setShowLogin(true)}} />
+                <img src={assets.cross_icon} alt="" onClick={()=>{setShowLogin(false)}} />
             </div>
             <div className="login-popup-input">
                 {currState==="Login"?<></>:<input type="text" placeholder="Your name" required />}
