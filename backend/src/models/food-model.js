@@ -12,11 +12,11 @@ const foodSchema = new mongoose.Schema({
     price:{
         type:Number,
         required:true,
+        min:[0,`price can't be negative`]
     },
     image:{
         type:String,
         required:true,
-        min:0
     },
     category:{
         type:String,
