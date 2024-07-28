@@ -5,4 +5,8 @@ const router = express.Router()
 
 router.post('/',upload.single('image'),foodControllers.addFoodController)
 
+router.get('/',foodControllers.getFoodListController)
+
+router.delete('/:id',foodControllers.deleteFoodController)
+
 module.exports = router
