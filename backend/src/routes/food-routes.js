@@ -3,7 +3,7 @@ const upload = require('../config/multer-config')
 const { foodControllers } = require('../controllers')
 const router = express.Router()
 
-router.post('/',upload.single('image'),foodControllers.addFoodController)
+router.post('/add',upload.single('image'),foodControllers.addFoodController)
 
 router.get('/',foodControllers.getFoodListController)
 

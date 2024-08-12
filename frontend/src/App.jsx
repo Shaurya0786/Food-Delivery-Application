@@ -7,6 +7,7 @@ import PageNotFound from './pages/NotFound/PageNotFound'
 import Footer from './components/Footer/Footer'
 import { useState } from 'react'
 import LoginPopup from './components/LoginPopup/LoginPopup'
+import Myorders from './pages/MyOrders/Myorders'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route  path='/' element={<Home/>}/>
         <Route  path='/cart' element={<Cart/>}/>
         <Route  path='/orders' element={<PlaceOrder/>}/>
+        <Route path='/myorders' element={<Myorders/>}/>
         <Route  path='*' element={<PageNotFound/>}/>
       </Routes>
     </div>

@@ -1,20 +1,29 @@
 import { createContext, useEffect, useState } from "react";
-import { food_list } from "../assets/assets";
+import axios from 'axios'
 
 export const StoreContext = createContext(null)
 
 const StoreContextProvider = ({children})=>{
     const [cartItem,setCartItem] = useState({})
+    const url="http://localhost:4000"
+    
+    const [token,setToken]= useState("")
 
-    const addItem = (itemid)=>{
+    const [food_list,setFoodList]=useState([]);
+
+    const addItem = async(itemid)=>{
         console.log(itemid)
         if(!cartItem[itemid]) setCartItem((prevState => ({...prevState,[itemid]:1})))
         else setCartItem((prevState => ({...prevState,[itemid]:prevState[itemid]+1})))
+        if(token){
+            await axios.post(url+"/api/cart/add",{itemid},{headers:{token}})
+        }
     }
 
-    const removeItem = (itemid) => {
+    const removeItem = async(itemid) => {
         if(cartItem[itemid]===0) setCartItem((prevState => {return {...prevState,[itemid]:0}}))
         else setCartItem((prevState => {return {...prevState,[itemid]:prevState[itemid]-1}}))
+        if(token){await axios.post(url+"/api/cart/remove",{itemid},{headers:{token}})}
     }
     
     const totalAmount=()=>{
@@ -28,6 +37,28 @@ const StoreContextProvider = ({children})=>{
         return total
     }
 
+    const fetchFoodList=async()=>{
+        const response=await axios.get(url+"/api/foods/");
+        setFoodList(response.data.data);
+    }
+
+    const loadCartData = async (token)=>{
+        const response=await axios.get(url+"/api/cart/",{},{headers:{token}})
+        console.log(response)
+        setCartItem(response.data.cartData)
+    }
+
+    useEffect(()=>{
+        async function loadData(){
+            await fetchFoodList();
+            if(localStorage.getItem("token")){
+                setToken(localStorage.getItem("token"));
+                await loadCartData(localStorage.getItem("token"))
+            }
+        }
+        loadData();
+    },[]);
+
 
     const contextValue = {
         food_list,
@@ -35,7 +66,10 @@ const StoreContextProvider = ({children})=>{
         removeItem,
         cartItem,
         setCartItem,
-        totalAmount
+        totalAmount,
+        url,
+        token,
+        setToken
     }
 
     return(

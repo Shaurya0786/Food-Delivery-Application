@@ -12,13 +12,15 @@ async function addFoodController(req,res){
         res.json({
             success:true,
             data:newfood,
-            error:{}
+            error:{},
+            message:"Food Added"
         })
     } catch (error) {
         res.json({
             success:false,
             data:{},
-            error:error
+            error:error,
+            message:"Error"
         })
     }
 }
@@ -29,13 +31,15 @@ async function getFoodListController(req,res) {
         return res.json({
             success:true,
             data:foodlist,
-            error:{}
+            error:{},
+            message:"Food Added"
         })
     } catch (error) {
         res.json({
             success:false,
             data:{},
-            error:error
+            error:error,
+            message:"Error"
         })
     }
 }
@@ -47,14 +51,16 @@ async function deleteFoodController(req,res) {
         return res.json({
             success:true,
             data:response,
-            error:{}
+            error:{},
+            message:"Food Added"
         })
     } catch (error) {
         console.log(error)
         res.json({
             success:false,
             data:{},
-            error:error
+            error:error,
+            message:"Error"
         })
     }
 }

@@ -25,7 +25,7 @@ async function getFoodListService(){
 async function deletefoodService(id){
     try {
         const food = await foodmodel.findById(id)
-        await fs.unlinkSync(`src/uploads/foods/${food.image}`)
+        fs.unlinkSync(`src/uploads/foods/${food.image}`)
         const response = await foodmodel.findByIdAndDelete(id) 
         return response
     } catch (error) {
